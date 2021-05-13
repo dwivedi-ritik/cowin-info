@@ -1,5 +1,10 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <p>coding sucks bro 😮‍💨</p>
   </div>
 </template>
+<style scoped>
+.about p{
+  text-align: center;
+}
+</style>
