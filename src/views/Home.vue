@@ -17,6 +17,7 @@ import ShowData from '../components/ShowData'
 export default {
   name: 'Home',
   components: { ShowData , SearchPin },
+  emits:[ "recieveData" ],
   data(){
     return {
       showResult:false,
@@ -38,7 +39,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 header{
   width: 100vw;
   height: 100px;

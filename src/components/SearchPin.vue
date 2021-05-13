@@ -12,6 +12,9 @@
             <input type="submit" value="Find Centers" class="submit-btn" > 
         </form>
     </div>
+    <div class="spinner" v-if="showSpin">
+        <div class="spin"></div>
+    </div>
 </template>
 
 <script>
@@ -24,25 +27,28 @@ export default {
             pincode:null,
             date:null,
             url:"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin",
-            allResults:[]
+            allResults:[],
+            showSpin:false
         }
     },
     methods:{
         async fetchResult(){
+            this.showSpin = true
             try{
-            let res = await axios({
-                method:"get",
-                url:this.url,
-                params:{
-                    pincode:this.pincode,
-                    date:this.date
-                }
-            })
-            this.allResults = await res.data["centers"]
+                let res = await axios({
+                    method:"get",
+                    url:this.url,
+                    params:{
+                        pincode:this.pincode,
+                        date:this.date
+                    }
+                })
+                this.allResults = await res.data["centers"]
             }
             catch(err){
                 this.allResults = []
             }
+            this.showSpin = false
             this.$emit("recieveData" , this.allResults)
         }
     }
@@ -54,6 +60,7 @@ export default {
 *{
     padding: 0%;
     margin: 0%;
+    color:grey;
 }
 .form-inp {
     margin-top: 80px;
