@@ -29,6 +29,7 @@ export default {
     },
     methods:{
         async fetchResult(){
+            try{
             let res = await axios({
                 method:"get",
                 url:this.url,
@@ -38,6 +39,10 @@ export default {
                 }
             })
             this.allResults = await res.data["centers"]
+            }
+            catch(err){
+                this.allResults = []
+            }
             this.$emit("recieveData" , this.allResults)
         }
     }
