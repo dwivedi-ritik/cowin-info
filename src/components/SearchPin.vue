@@ -7,9 +7,9 @@
             </div>
             <div class=usr-inp>
                 <label>Date </label>
-                <input type="text" class="inp-date" v-model="date">
+                <input type="text" class="inp-date" v-model="date" required>
             </div>
-            <input type="submit" value="Find Centers" class="submit-btn" required> 
+            <input type="submit" value="Find Centers" class="submit-btn" > 
         </form>
     </div>
 </template>
