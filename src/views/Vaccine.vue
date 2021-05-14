@@ -1,13 +1,5 @@
 <template>
-    <div class="head-info">
-        <p>Daily Vaccination Information</p><br>
-        <div class="head-detail-in">
-            <p id="head-text">Source of data is <a href="https://dashboard.cowin.gov.in/" id="link">Cowin-portal </a>, 
-                click at Cowin text for more information
-                wll i know site is incomplete in many , i made it just as pratice project 
-                details at the side of arrow shows the todays increased data </p>
-        </div>
-    </div>
+    <Header />
     <div class="parent-vac-info" v-if="showData">
         <div class="vac-info">
             <p id="title-text">Each Doses Count</p>
@@ -49,19 +41,17 @@
             </span> 
         </div>
     </div>
-    <div class="spinner" v-else>
-        <div class="spin-center">
-            <div class="spin"></div>
-        </div>
-    </div>
+    <Spinner v-else/>
 </template>
 
 <script>
 import axios from "axios"
-
+import Header from "../components/Header.vue"
+import Spinner from "../components/Spinner.vue"
 
 export default {
     name:"Vaccine",
+    components:{ Header , Spinner},
     data(){
         return {
             url:"https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports",
@@ -95,43 +85,7 @@ export default {
 
 <style>
 
-.spinner{
-    width: 100vw;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.spin{
-    display: block;
-    width:40px;
-    height: 40px;
-    border:3px solid transparent;
-    border-radius: 50%;
-    border-top-color: blueviolet;
-    animation: spin 1s ease-in infinite;
-}
-@keyframes spin {
-    to { transform: rotateZ(360deg) }
-}
-#head-text{
-    color: dimgrey;
-    font-size:14px;
-    line-height: 18px;
-}
-.head-info{
-    margin-top: 3%;
-    width: 100vw;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-.head-detail-in{
-    height: 180px;
-    width: 450px;
-}
+
 #daily-info {
     display: flex;
     justify-content: center;

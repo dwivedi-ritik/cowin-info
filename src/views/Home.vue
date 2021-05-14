@@ -3,7 +3,7 @@
     <span class="title-info">Vaccination center info</span>
     <p class="title-detail">This site usases <a href="https://apisetu.gov.in/public/marketplace/api/cowin/cowin-public-v2#/" id="link"> Cowin public APIs</a> for fetching data.
     <br>Enter your area pincode with date</p>
-    <img src ="../../assets/img.png" width="50" id="img-logo">  
+    <img src ="../../assets/img2.png" width="80" id="img-logo">  
   </div>
     <SearchPin @recieveData="shower"></SearchPin>
     <ShowData v-if="showResult" :allData=allData ></ShowData>

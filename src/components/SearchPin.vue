@@ -12,21 +12,24 @@
             <input type="submit" value="Find Centers" class="submit-btn" > 
         </form>
     </div>
-    <div class="spinner" v-if="showSpin">
-        <div class="spin"></div>
-    </div>
+    <Spinner v-if="showSpin"/>
 </template>
 
 <script>
 import axios from "axios"
+import Spinner from "./Spinner.vue"
+
+const URL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin"
 
 export default {
     name:"SearchPin",
+    components:{Spinner},
+    emits: ["recieveData"],
     data(){
         return{
             pincode:null,
             date:null,
-            url:"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin",
+            url:URL,
             allResults:[],
             showSpin:false
         }
@@ -63,7 +66,7 @@ export default {
     color:grey;
 }
 .form-inp {
-    margin-top: 80px;
+    margin-top: 40px;
     width: 100vw;
     height: 150px;
 }
