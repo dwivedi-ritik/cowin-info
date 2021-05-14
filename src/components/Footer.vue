@@ -27,7 +27,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 100%;
   width:100%;
   margin-top:4%;
   background-color: rgba(244, 250, 244 , 0.4);
