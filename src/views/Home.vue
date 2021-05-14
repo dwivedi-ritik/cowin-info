@@ -56,7 +56,7 @@ header{
 }
 .title-detail{
   margin-top:20px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 20px;
 }
 .title-info{

@@ -17,21 +17,22 @@
 #site-info{
   padding: 3px;
   width: 350px;
-  height: 150px;
 }
 #lob{
   font-size:16px;
 }
 .footer{
+  margin-top:4%;
   display:flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  height: 100%;
-  width:100%;
-  margin-top:4%;
+  width:100vw;
+  height:180px;
   background-color: rgba(244, 250, 244 , 0.4);
+  /* background-color: blueviolet  ; */
   color:grey
+
 }
 
 </style>
