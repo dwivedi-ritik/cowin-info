@@ -54,7 +54,7 @@
 #nav a {
   color: #2c3e50;
   text-decoration: none;
-  cursor:pointer
+  cursor:pointer;
 }
 
 #nav a.router-link-exact-active {

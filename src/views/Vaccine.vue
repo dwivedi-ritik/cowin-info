@@ -2,7 +2,7 @@
     <div class="head-info">
         <p>Daily Vaccination Information</p><br>
         <div class="head-detail-in">
-            <p id="head-text">Source of data is <a href="#" id="link">Cowin-portal </a>, 
+            <p id="head-text">Source of data is <a href="https://dashboard.cowin.gov.in/" id="link">Cowin-portal </a>, 
                 click at Cowin text for more information
                 wll i know site is incomplete in many , i made it just as pratice project 
                 details at the side of arrow shows the todays increased data </p>
@@ -12,13 +12,13 @@
         <div class="vac-info">
             <p id="title-text">Each Doses Count</p>
             <div id="daily-info">
-                <p>First Dose {{ vaccineData.vaccination.tot_dose_1 }}</p>
+                <p>First Dose {{ vaccineData.vaccination.tot_dose_1.toLocaleString() }}</p>
                 <span class="material-icons tred-icon">
                     trending_flat
                 </span>
             </div>
             <div id="daily-info">
-                <p>Second Dose {{ vaccineData.vaccination.tot_dose_2 }}</p>
+                <p>Second Dose {{ vaccineData.vaccination.tot_dose_2.toLocaleString() }}</p>
                 <span class="material-icons tred-icon">
                     trending_flat
                 </span>
@@ -28,10 +28,10 @@
             </span>
         </div>
         <div class="vac-info">
-            <p id="title-text">Total Vaccination</p>
-            <p>{{ vaccineData.vaccination.total_doses}}</p>
+            <p id="title-text">Fully Vaccined</p>
+            <p>{{ vaccineData.vaccination.total_doses.toLocaleString()}}</p>
             <div id="daily-info">
-                <p>{{ vaccineData.vaccination.today}}</p>
+                <p style="color:green;">{{ vaccineData.vaccination.today.toLocaleString() }}</p>
                 <span class="material-icons tred-icon">
                     trending_flat
                 </span>
@@ -42,8 +42,8 @@
         </div>
         <div class="vac-info">
             <p id="title-text">Total Doses</p>
-            <p> Covaxin  {{ vaccineData.vaccination.covaxin}}</p>
-            <p> Covishield {{ vaccineData.vaccination.covishield}}</p>
+            <p> Covaxin  {{ vaccineData.vaccination.covaxin.toLocaleString()}}</p>
+            <p> Covishield {{ vaccineData.vaccination.covishield.toLocaleString()}}</p>
             <span class="material-icons ana-icon" c>
                 analytics
             </span> 
@@ -72,7 +72,8 @@ export default {
     methods:{
         getDate(){
             let date = new Date()
-            return date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()
+            let month = parseInt(date.getMonth())+1
+            return date.getFullYear()+"-"+month+"-"+date.getDate()
         },
         async getVaccineData(){
             let res = await axios({
@@ -82,7 +83,7 @@ export default {
                     date:this.getDate()
                 }
             })
-            this.vaccineData = (await res.data).topBlock
+            this.vaccineData = (await res.data).topBlock       
         }
     },
     mounted(){
@@ -129,9 +130,7 @@ export default {
 }
 .head-detail-in{
     height: 180px;
-    padding: 2%;
     width: 450px;
-    min-width: 180px;
 }
 #daily-info {
     display: flex;
@@ -189,6 +188,9 @@ export default {
     }
     .vac-info{
         padding:0;
+    }
+    .head-detail-in{
+        width: 350px;
     }
 }
 </style>
