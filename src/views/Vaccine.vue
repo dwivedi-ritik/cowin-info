@@ -130,8 +130,6 @@ export default {
     font-size: 20px;
     font-weight: bolder;
     transform: rotate(-90deg);
-}
-.material-icons{
     color:rgba(0,0,0,0.2);
 }
 @media only screen and (max-width: 840px) {
