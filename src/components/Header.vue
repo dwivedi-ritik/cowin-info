@@ -3,9 +3,8 @@
         <p>Daily Vaccination Information</p><br>
         <div class="head-detail-in">
             <p id="head-text">Source of data is <a href="https://dashboard.cowin.gov.in/" id="link">Cowin-portal </a>, 
-                click at Cowin text for more information
-                wll i know site is incomplete in many , i made it just as pratice project 
-                details at the side of arrow shows the todays increased data </p>
+                click at Cowin text for more information.i know site is incomplete in many but i made it just as pratice project. 
+                Details at the side of arrow shows the current increased data </p>
         </div>
     </div>
 </template>

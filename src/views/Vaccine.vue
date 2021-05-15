@@ -1,19 +1,14 @@
 <template>
     <Header />
+    <StateSelection @getStateData="gettingStateData"/>
     <div class="parent-vac-info" v-if="showData">
         <div class="vac-info">
-            <p id="title-text">Each Doses Count</p>
+            <p id="title-text">Dose Count</p>
             <div id="daily-info">
-                <p>First Dose {{ vaccineData.vaccination.tot_dose_1.toLocaleString() }}</p>
-                <span class="material-icons tred-icon">
-                    trending_flat
-                </span>
+                <p> First-Dose <span id="nm-d">{{ vaccineData.vaccination.tot_dose_1.toLocaleString() }}</span></p>
             </div>
             <div id="daily-info">
-                <p>Second Dose {{ vaccineData.vaccination.tot_dose_2.toLocaleString() }}</p>
-                <span class="material-icons tred-icon">
-                    trending_flat
-                </span>
+                <p> Second-Dose <span id="nm-d">{{ vaccineData.vaccination.tot_dose_2.toLocaleString() }}</span></p>
             </div>
             <span class="material-icons ana-icon">
                 analytics
@@ -23,7 +18,7 @@
             <p id="title-text">Fully Vaccined</p>
             <p>{{ vaccineData.vaccination.total_doses.toLocaleString()}}</p>
             <div id="daily-info">
-                <p style="color:green;">{{ vaccineData.vaccination.today.toLocaleString() }}</p>
+                <p style="color:green;"> Today {{ vaccineData.vaccination.today.toLocaleString() }}</p>
                 <span class="material-icons tred-icon">
                     trending_flat
                 </span>
@@ -33,7 +28,7 @@
             </span>
         </div>
         <div class="vac-info">
-            <p id="title-text">Total Doses</p>
+            <p id="title-text">Vaccine Type</p>
             <p> Covaxin  {{ vaccineData.vaccination.covaxin.toLocaleString()}}</p>
             <p> Covishield {{ vaccineData.vaccination.covishield.toLocaleString()}}</p>
             <span class="material-icons ana-icon" c>
@@ -48,32 +43,35 @@
 import axios from "axios"
 import Header from "../components/Header.vue"
 import Spinner from "../components/Spinner.vue"
+import StateSelection from "../components/StateSelection.vue"
+import {getDate , URL} from "../components/state.js"
 
 export default {
     name:"Vaccine",
-    components:{ Header , Spinner},
+    components:{ Header , Spinner , StateSelection },
     data(){
         return {
-            url:"https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports",
             vaccineData:null,
             showData:false
         }
     },
     methods:{
-        getDate(){
-            let date = new Date()
-            let month = parseInt(date.getMonth())+1
-            return date.getFullYear()+"-"+month+"-"+date.getDate()
-        },
         async getVaccineData(){
             let res = await axios({
-                url:this.url,
+                url:URL,
                 method:"get",
                 params:{
-                    date:this.getDate()
+                    date:getDate()
                 }
             })
             this.vaccineData = (await res.data).topBlock       
+        },
+        gettingStateData(stateData){
+            if(!stateData){
+                this.getVaccineData()
+            }else{ 
+                this.vaccineData = stateData    
+            }
         }
     },
     mounted(){
@@ -91,6 +89,7 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
 .parent-vac-info{
     margin-top:4%;
     width:100vw;
