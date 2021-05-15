@@ -24,7 +24,7 @@ export default {
   components:{Footer},
   data(){
     return{
-      showHamMenu:false,
+      showHamMenu:true,
     }
   },
   methods:{
@@ -51,6 +51,7 @@ export default {
 }
 #ham-route{
   position:fixed;
+  width: 0;
   z-index: 2;
   background-color: #fff;
   height: 300px;
@@ -61,12 +62,20 @@ export default {
   flex-direction: column;
   justify-content: space-around;
 }
+
+#ham-route a:hover{
+  padding-left: 5%;
+  transition:0.3s padding-left ease; 
+}
 #cross{
   font-size: 16px;
   position: absolute;
   top:5px;
   right:5px;
   cursor:pointer
+}
+#cross:hover{
+  font-weight: bolder;
 }
 #nav {
   padding: 30px;
