@@ -24,7 +24,7 @@ export default {
   components:{Footer},
   data(){
     return{
-      showHamMenu:true,
+      showHamMenu:false,
     }
   },
   methods:{
