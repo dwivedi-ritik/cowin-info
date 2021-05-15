@@ -1,7 +1,7 @@
 <template>
     <div class="state-select">
         <select v-model="selectedState" @change="stateVacData"  id="op-selec">
-            <option> Select State </option>
+            <option>Select State</option>
             <option v-for="( state , index) in states" :key=index>{{ state }}</option>
         </select>
     </div>
@@ -15,7 +15,7 @@ export default {
     data(){
         return {
             states :allStates,
-            selectedState:'All Over Country' ,
+            selectedState:'Select State',
             retrivedStateData:null
         }
     },
