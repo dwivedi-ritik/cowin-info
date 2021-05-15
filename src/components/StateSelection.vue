@@ -49,6 +49,8 @@ export default {
 
 #op-selec {
     padding: 5px;
+    background-color: #fff;
+    
 }
 #op-selec:focus {
     outline: none;
