@@ -1,4 +1,4 @@
-###cowin-help
+### Cowin-help
 
 Make sure you add `netlify.toml` file in your root folder.
 otherwise you will face routing issue
